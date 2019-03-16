@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
             ),
             Text(
-              "Click to Start",
+              "Click here to get Started",
               style: TextStyle(fontSize: 18.0),
             )
           ],
