@@ -20,31 +20,88 @@ class _StepTwo extends State<StepTwo> {
     List<double> impedancesIm = [];
     List<String> impedanceNames = [];
 
-    for (int i = 1; i < widget.busNo + 1; i++) {
-      if (i == widget.busNo) {
-        impedanceNames.add('Z' + i.toString() + ',' + (1).toString());
-      } else
-        impedanceNames.add('Z' + i.toString() + ',' + (i + 1).toString());
-      //print(impedanceNames);
+    for (int i = 0; i < widget.busNo; i++) {
+      // if (i == widget.busNo) {
+      //   impedanceNames.add('Z' + i.toString() + ',' + (1).toString());
+      // } else
+      impedanceNames.add('Z' + i.toString() + ',' + (i + 1).toString());
+      if ((i + 1) == widget.busNo) {
+        for (var j = 0; j < widget.busNo - 1; j++) {
+          impedanceNames.add('Z' + j.toString() + ',' + (j + 2).toString());
+          if ((j + 2) == widget.busNo) {
+            for (var i = 0; i < widget.busNo - 2; i++) {
+              impedanceNames.add('Z' + i.toString() + ',' + (i + 3).toString());
+              if ((i + 3) == widget.busNo) {
+                for (var q = 0; q < widget.busNo - 3; q++) {
+                  impedanceNames
+                      .add('Z' + q.toString() + ',' + (q + 4).toString());
+                  if ((q + 4) == widget.busNo) {
+                    for (var s = 0; s < widget.busNo - 4; s++) {
+                      impedanceNames
+                          .add('Z' + s.toString() + ',' + (s + 5).toString());
+                      if ((s + 5) == widget.busNo) {
+                        for (var e = 0; e < widget.busNo - 5; e++) {
+                          impedanceNames.add(
+                              'Z' + e.toString() + ',' + (e + 6).toString());
+                          if ((e + 6) == widget.busNo) {
+                            for (var v = 0; v < widget.busNo - 6; v++) {
+                              impedanceNames.add('Z' +
+                                  v.toString() +
+                                  ',' +
+                                  (v + 7).toString());
+                              if ((v + 7) == widget.busNo) {
+                                for (var v = 0; v < widget.busNo - 7; v++) {
+                                  impedanceNames.add('Z' +
+                                      v.toString() +
+                                      ',' +
+                                      (v + 8).toString());
+                                  if ((v + 8) == widget.busNo) {
+                                    for (var v = 0; v < widget.busNo - 8; v++) {
+                                      impedanceNames.add('Z' +
+                                          v.toString() +
+                                          ',' +
+                                          (v + 9).toString());
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
+    // print(impedanceNames);
 
-    for (int i = 1; i < widget.busNo + 1; i++) {
+    // Controller for number of inputs required
+    for (int i = 1; i < impedanceNames.length + 1; i++) {
       textControlRl['Z' + i.toString()] = TextEditingController();
       textControlIm['Z' + i.toString()] = TextEditingController();
     }
 
     void valid() {
-      for (int i = 1; i < widget.busNo + 1; i++) {
+      for (int i = 1; i < impedanceNames.length + 1; i++) {
         double _rl = double.parse(textControlRl['Z' + i.toString()].text);
         double _im = double.parse(textControlIm['Z' + i.toString()].text);
         impedances.add(_rl);
         impedancesIm.add(_im);
       }
+      print(impedances);
+      print(impedancesIm);
+      // print(impedanceNames);
 
       Navigator.of(context).push(
         MaterialPageRoute(builder: (context) {
           return StepThree(
             busNo: widget.busNo,
+            // busNo: impedanceNames.length,
             real: impedances,
             im: impedancesIm,
             impedanceNames: impedanceNames,
@@ -64,11 +121,13 @@ class _StepTwo extends State<StepTwo> {
         ),
         actions: [
           FlatButton(
-              child: Text(
-                "NEXT",
-                style: TextStyle(color: Colors.white),
-              ),
-              onPressed: valid),
+            // onPressed: ()=> null,
+            child: Text(
+              "NEXT",
+              style: TextStyle(color: Colors.white),
+            ),
+            onPressed: valid,
+          ),
         ],
       ),
       body: Container(
@@ -76,7 +135,7 @@ class _StepTwo extends State<StepTwo> {
         //color: Colors.blue,
         child: new Center(
           child: new ListView.builder(
-            itemCount: widget.busNo,
+            itemCount: impedanceNames.length,
             itemBuilder: (context, index) {
               return Container(
                 constraints: BoxConstraints(maxWidth: 250.0),
