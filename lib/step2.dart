@@ -20,64 +20,72 @@ class _StepTwo extends State<StepTwo> {
     List<double> impedancesIm = [];
     List<String> impedanceNames = [];
 
-    for (int i = 0; i < widget.busNo; i++) {
-      // if (i == widget.busNo) {
-      //   impedanceNames.add('Z' + i.toString() + ',' + (1).toString());
-      // } else
-      impedanceNames.add('Z' + i.toString() + ',' + (i + 1).toString());
-      if ((i + 1) == widget.busNo) {
-        for (var j = 0; j < widget.busNo - 1; j++) {
-          impedanceNames.add('Z' + j.toString() + ',' + (j + 2).toString());
-          if ((j + 2) == widget.busNo) {
-            for (var i = 0; i < widget.busNo - 2; i++) {
-              impedanceNames.add('Z' + i.toString() + ',' + (i + 3).toString());
-              if ((i + 3) == widget.busNo) {
-                for (var q = 0; q < widget.busNo - 3; q++) {
-                  impedanceNames
-                      .add('Z' + q.toString() + ',' + (q + 4).toString());
-                  if ((q + 4) == widget.busNo) {
-                    for (var s = 0; s < widget.busNo - 4; s++) {
-                      impedanceNames
-                          .add('Z' + s.toString() + ',' + (s + 5).toString());
-                      if ((s + 5) == widget.busNo) {
-                        for (var e = 0; e < widget.busNo - 5; e++) {
-                          impedanceNames.add(
-                              'Z' + e.toString() + ',' + (e + 6).toString());
-                          if ((e + 6) == widget.busNo) {
-                            for (var v = 0; v < widget.busNo - 6; v++) {
-                              impedanceNames.add('Z' +
-                                  v.toString() +
-                                  ',' +
-                                  (v + 7).toString());
-                              if ((v + 7) == widget.busNo) {
-                                for (var v = 0; v < widget.busNo - 7; v++) {
-                                  impedanceNames.add('Z' +
-                                      v.toString() +
-                                      ',' +
-                                      (v + 8).toString());
-                                  if ((v + 8) == widget.busNo) {
-                                    for (var v = 0; v < widget.busNo - 8; v++) {
-                                      impedanceNames.add('Z' +
-                                          v.toString() +
-                                          ',' +
-                                          (v + 9).toString());
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    for (int i = 1; i < widget.busNo + 1; i++) {
+      if (i == widget.busNo) {
+        impedanceNames.add('Z' + i.toString() + ',' + (1).toString());
+      } else
+        impedanceNames.add('Z' + i.toString() + ',' + (i + 1).toString());
     }
+    // print(impedanceNames);
+
+    // for (int i = 0; i < widget.busNo; i++) {
+    //   // if (i == widget.busNo) {
+    //   //   impedanceNames.add('Z' + i.toString() + ',' + (1).toString());
+    //   // } else
+    //   impedanceNames.add('Z' + i.toString() + ',' + (i + 1).toString());
+    //   if ((i + 1) == widget.busNo) {
+    //     for (var j = 0; j < widget.busNo - 1; j++) {
+    //       impedanceNames.add('Z' + j.toString() + ',' + (j + 2).toString());
+    //       if ((j + 2) == widget.busNo) {
+    //         for (var i = 0; i < widget.busNo - 2; i++) {
+    //           impedanceNames.add('Z' + i.toString() + ',' + (i + 3).toString());
+    //           if ((i + 3) == widget.busNo) {
+    //             for (var q = 0; q < widget.busNo - 3; q++) {
+    //               impedanceNames
+    //                   .add('Z' + q.toString() + ',' + (q + 4).toString());
+    //               if ((q + 4) == widget.busNo) {
+    //                 for (var s = 0; s < widget.busNo - 4; s++) {
+    //                   impedanceNames
+    //                       .add('Z' + s.toString() + ',' + (s + 5).toString());
+    //                   if ((s + 5) == widget.busNo) {
+    //                     for (var e = 0; e < widget.busNo - 5; e++) {
+    //                       impedanceNames.add(
+    //                           'Z' + e.toString() + ',' + (e + 6).toString());
+    //                       if ((e + 6) == widget.busNo) {
+    //                         for (var v = 0; v < widget.busNo - 6; v++) {
+    //                           impedanceNames.add('Z' +
+    //                               v.toString() +
+    //                               ',' +
+    //                               (v + 7).toString());
+    //                           if ((v + 7) == widget.busNo) {
+    //                             for (var v = 0; v < widget.busNo - 7; v++) {
+    //                               impedanceNames.add('Z' +
+    //                                   v.toString() +
+    //                                   ',' +
+    //                                   (v + 8).toString());
+    //                               if ((v + 8) == widget.busNo) {
+    //                                 for (var v = 0; v < widget.busNo - 8; v++) {
+    //                                   impedanceNames.add('Z' +
+    //                                       v.toString() +
+    //                                       ',' +
+    //                                       (v + 9).toString());
+    //                                 }
+    //                               }
+    //                             }
+    //                           }
+    //                         }
+    //                       }
+    //                     }
+    //                   }
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
     // print(impedanceNames);
 
     // Controller for number of inputs required
@@ -93,8 +101,8 @@ class _StepTwo extends State<StepTwo> {
         impedances.add(_rl);
         impedancesIm.add(_im);
       }
-      print(impedances);
-      print(impedancesIm);
+      // print(impedances);
+      // print(impedancesIm);
       // print(impedanceNames);
 
       Navigator.of(context).push(

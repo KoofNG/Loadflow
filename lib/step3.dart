@@ -21,17 +21,30 @@ class _StepThree extends State<StepThree> {
     List<double> realAdm = [];
     List<double> imAdm = [];
     List<String> impedanceNames = [];
-    print(widget.busNo);
+    
+    
+
     for (var i = 0; i < widget.busNo; i++) {
       List C = [];
       for (var j = 0; j < widget.busNo; j++) {
-        C.add('cell_${i}_$j');
-        // C.add(0);
+        // C.add('cell_${i}_$j');
+        C.add(0);
       }
       R[i.toString()] = C;
       R_Print[i.toString()] = C;
     }
-    print(R);
+    // print(R);
+
+        // print(realAdm);
+        // print(imAdm);
+
+    // R.forEach((k,v) =>
+    //   print('${k},${v}');   
+    //   for (var i = 0; i < count; i++) {
+        
+    //   }   
+    // );
+    // print(v);
 
     for (int i = 0; i < widget.busNo; i++) {
       var _r = (1 / widget.real[i]);
@@ -49,27 +62,34 @@ class _StepThree extends State<StepThree> {
         R_Print[i.toString()][i + 1] = '$_r + ${_imm}j';
       }
     }
-    print(realAdm);
-    print(imAdm);
 
-    // R.forEach((k,v) =>
-    //   print('${k},${v}');   
-    //   for (var i = 0; i < count; i++) {
-        
-    //   }   
-    // );
+    _getReverseValue (String position) {
+      R.forEach((k,v) {
+        if (k == v) {
+          for (var i = 0; i < v.length; i++) {
+            if (i == v) {
+              return R[k][i];
+            }
+          }
+        }
+      });
+    }
 
+      
     R.forEach((k,v) {
-      // print('${k},${v}');
-      print(v);
-      // v.forEach((element) {
-      //   if (element != 0){
-      //     print(element);
-      //   }
-      // });
-    });
-
-    
+      for (var i = 0; i < v.length; i++) {
+        if (v[i] != 0) {          
+          for (var i = 0; i < v.length; i++) {
+            v[0] = v[i]; 
+          }
+        }
+        print(v);
+      }
+    });    
+        
+    // for (var i = 0; i < v.length; i++) {
+    //             v[0] = v[i];
+    //           } 
 
     // print(R);
     // print(R_Print);
